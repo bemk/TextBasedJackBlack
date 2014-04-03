@@ -240,6 +240,7 @@ int main() {
 
 		if (state == NO)
 			input = 'n';
+		state = WAITING;
 		usleep(500);
 	}
 	return 0;
