@@ -15,6 +15,19 @@
 
 using namespace std;
 
+enum keyState {YES, NO, WAITING};
+
+enum keyState state = WAITING;
+
+void isrYes()
+{
+	state = YES;
+}
+
+void isrNo()
+{
+	state = NO;
+}
 
 class BlackJack{
 private:
@@ -51,17 +64,18 @@ private:
 	}
 
 	void inputCheck(char input){
-		switch(input){
-		case 'y':
+		switch(state){
+		case YES:
 			drawCard();
 			break;
-		case 'n':
+		case NO:
 			endTurn = 1;
 			break;
 		default:
 			cout << "try a different command" << endl;
 			break;
 		}
+		state = WAITING;
 	}
 	void print(){
 		cout << "number of cards in hand: " << cardsInHand.size() << endl;
@@ -107,7 +121,7 @@ public:
 			displayLED(getTotal());
 			print();
 			cout << "Draw card? [y/n]" << endl;
-			cin >> input;
+			while (state == WAITING);
 			inputCheck(input);
 			if (getTotal() > 21){
 				print();
@@ -205,6 +219,9 @@ int main() {
 	digitalWrite(pinNumbersArr[3], LOW);
 	digitalWrite(pinNumbersArr[4], LOW);
 	digitalWrite(pinNumbersArr[5], LOW);
+
+	wiringPiISR(2, INT_EDGE_RISING, isrNo);
+	wiringPiISR(3, INT_EDGE_RISING, isrYes);
 
 	while(input != 'n'){
 //		for (int i = 0; i < 6; ++i){
