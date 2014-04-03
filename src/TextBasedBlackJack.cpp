@@ -87,7 +87,7 @@ private:
 	}
 
 public:
-	static const int pinNumbers[6] = {15,16,1,4,5,6};
+	static int pinNumbers[6] = {15,16,1,4,5,6};
 
 	BlackJack(){
 		endTurn = 0;
