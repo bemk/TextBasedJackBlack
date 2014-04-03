@@ -87,10 +87,11 @@ private:
 	}
 
 public:
-	static int pinNumbers[6] = {15,16,1,4,5,6};
+	int pinNumbers[6];
 
 	BlackJack(){
 		endTurn = 0;
+		pinNumbers = {15,16,1,4,5,6};
 	}
 	void play(){
 		fillCards();
@@ -243,6 +244,7 @@ int main() {
 	cout << "BlackJack" << endl; // prints BlackJack
 	cout << "*-------------------*" << endl;
 	char input;
+	int pinNumbersArr[6] = {15,16,1,4,5,6};
 	/*
 	//---------------------------------\\
 	//For the wiringPi
@@ -261,12 +263,12 @@ int main() {
  	*/
 	wiringPiSetup();
 
-	pinMode(BlackJack::pinNumbers[0], OUTPUT);
-	pinMode(BlackJack::pinNumbers[1], OUTPUT);
-	pinMode(BlackJack::pinNumbers[2], OUTPUT);
-	pinMode(BlackJack::pinNumbers[3], OUTPUT);
-	pinMode(BlackJack::pinNumbers[4], OUTPUT);
-	pinMode(BlackJack::pinNumbers[5], OUTPUT);
+	pinMode(pinNumbersArr[0], OUTPUT);
+	pinMode(pinNumbersArr[1], OUTPUT);
+	pinMode(pinNumbersArr[2], OUTPUT);
+	pinMode(pinNumbersArr[3], OUTPUT);
+	pinMode(pinNumbersArr[4], OUTPUT);
+	pinMode(pinNumbersArr[5], OUTPUT);
 
 
 	while(input != 'n'){
