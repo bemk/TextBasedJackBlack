@@ -103,7 +103,7 @@ public:
 			if (getTotal() > 21){
 				print();
 				cout << "you are dead" << endl;
-				digitalWrite(22, HIGH);
+				digitalWrite(pinNumbers[5], HIGH);
 				return;
 			}
 		}
@@ -135,81 +135,83 @@ public:
 	void displayLED(int value){
 		switch (value){
 		case 4:
-			digitalWrite(12, HIGH);
+			digitalWrite(pinNumbers[2], HIGH);
 			break;
 		case 5:
-			digitalWrite(8, HIGH);
-			digitalWrite(12, HIGH);
+			digitalWrite(pinNumbers[0], HIGH);
+			digitalWrite(pinNumbers[2], HIGH);
 			break;
 		case 6:
-			digitalWrite(10, HIGH);
-			digitalWrite(12, HIGH);
+			digitalWrite(pinNumbers[1], HIGH);
+			digitalWrite(pinNumbers[2], HIGH);
 			break;
 		case 7:
-			digitalWrite(8, HIGH);
-			digitalWrite(10, HIGH);
-			digitalWrite(12, HIGH);
+			digitalWrite(pinNumbers[0], HIGH);
+			digitalWrite(pinNumbers[1], HIGH);
+			digitalWrite(pinNumbers[2], HIGH);
 			break;
 		case 8:
-			digitalWrite(16, HIGH);
+			digitalWrite(pinNumbers[3], HIGH);
 			break;
 		case 9:
-			digitalWrite(8, HIGH);
-			digitalWrite(16, HIGH);
+			digitalWrite(pinNumbers[0], HIGH);
+			digitalWrite(pinNumbers[3], HIGH);
 			break;
 		case 10:
-			digitalWrite(10, HIGH);
-			digitalWrite(16, HIGH);
+			digitalWrite(pinNumbers[1], HIGH);
+			digitalWrite(pinNumbers[3], HIGH);
 			break;
 		case 11:
-			digitalWrite(8, HIGH);
-			digitalWrite(10, HIGH);
-			digitalWrite(16, HIGH);
+			digitalWrite(pinNumbers[0], HIGH);
+			digitalWrite(pinNumbers[1], HIGH);
+			digitalWrite(pinNumbers[3], HIGH);
 			break;
 		case 12:
-			digitalWrite(12, HIGH);
-			digitalWrite(16, HIGH);
+			digitalWrite(pinNumbers[2], HIGH);
+			digitalWrite(pinNumbers[3], HIGH);
 			break;
 		case 13:
-			digitalWrite(8, HIGH);
-			digitalWrite(12, HIGH);
-			digitalWrite(16, HIGH);
+			digitalWrite(pinNumbers[0], HIGH);
+			digitalWrite(pinNumbers[2], HIGH);
+			digitalWrite(pinNumbers[3], HIGH);
 			break;
 		case 14:
-			digitalWrite(10, HIGH);
-			digitalWrite(12, HIGH);
-			digitalWrite(16, HIGH);
+			digitalWrite(pinNumbers[1], HIGH);
+			digitalWrite(pinNumbers[2], HIGH);
+			digitalWrite(pinNumbers[3], HIGH);
 			break;
 		case 15:
-			digitalWrite(8, HIGH);
-			digitalWrite(10, HIGH);
-			digitalWrite(12, HIGH);
-			digitalWrite(16, HIGH);
+			digitalWrite(pinNumbers[0], HIGH);
+			digitalWrite(pinNumbers[1], HIGH);
+			digitalWrite(pinNumbers[2], HIGH);
+			digitalWrite(pinNumbers[3], HIGH);
 			break;
 		case 16:
-			digitalWrite(18, HIGH);
+			digitalWrite(pinNumbers[4], HIGH);
 			break;
 		case 17:
-			digitalWrite(8, HIGH);
-			digitalWrite(18, HIGH);
+			digitalWrite(pinNumbers[0], HIGH);
+			digitalWrite(pinNumbers[4], HIGH);
 			break;
 		case 18:
-			digitalWrite(10, HIGH);
-			digitalWrite(18, HIGH);
+			digitalWrite(pinNumbers[1], HIGH);
+			digitalWrite(pinNumbers[4], HIGH);
 			break;
 		case 19:
-			digitalWrite(8, HIGH);
-			digitalWrite(10, HIGH);
-			digitalWrite(18, HIGH);
+			digitalWrite(pinNumbers[0], HIGH);
+			digitalWrite(pinNumbers[1], HIGH);
+			digitalWrite(pinNumbers[4], HIGH);
 			break;
 		case 20:
-			digitalWrite(12, HIGH);
-			digitalWrite(18, HIGH);
+			digitalWrite(pinNumbers[2], HIGH);
+			digitalWrite(pinNumbers[4], HIGH);
 			break;
 		case 21:
-			digitalWrite(8, HIGH);
-			digitalWrite(12, HIGH);
-			digitalWrite(18, HIGH);
+			digitalWrite(pinNumbers[0], HIGH);
+			digitalWrite(pinNumbers[2], HIGH);
+			digitalWrite(pinNumbers[4], HIGH);
+			break;
+		default:
 			break;
 		}
 	}
@@ -235,7 +237,7 @@ public:
 	}
 };
 
-const int pinNumbers[6] = {8,10,12,16,18,22};
+const int pinNumbers[6] = {15,16,1,4,5,6};
 
 
 int main() {
