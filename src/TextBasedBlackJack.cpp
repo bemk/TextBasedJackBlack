@@ -91,7 +91,12 @@ public:
 
 	BlackJack(){
 		endTurn = 0;
-		pinNumbers = {15,16,1,4,5,6};
+		pinNumbers[0] = 15;
+		pinNumbers[1] = 16;
+		pinNumbers[2] = 1;
+		pinNumbers[3] = 4;
+		pinNumbers[4] = 5;
+		pinNumbers[5] = 6;
 	}
 	void play(){
 		fillCards();
