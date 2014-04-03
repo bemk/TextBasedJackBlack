@@ -242,6 +242,7 @@ int main() {
 	cout << "BlackJack" << endl; // prints BlackJack
 	cout << "*-------------------*" << endl;
 	char input;
+	/*
 	//---------------------------------\\
 	//For the wiringPi
 	wiringPiSetup();
@@ -256,11 +257,23 @@ int main() {
 	digitalWrite(2, HIGH);
 	digitalWrite(4, LOW);
 	digitalWrite(6, LOW);
+ 	*/
+
+	wiringPiSetup();
+	pinMode(1, OUTPUT);
+	pinMode(2, OUTPUT);
+	digitalWrite(1, LOW);
+	digitalWrite(2, LOW);
+	for (int i = 3; i <= 26; ++i){
+		pinMode(i, OUTPUT);
+		digitalWrite(i, HIGH);
+	}
+
 
 	while(input != 'n'){
-		for (int i = 0; i < 6; ++i){
-			digitalWrite(pinNumbers[i], HIGH);
-		}
+//		for (int i = 0; i < 6; ++i){
+//			digitalWrite(pinNumbers[i], HIGH);
+//		}
 		//Debug reasons for the LEDS on the Pi
 		//delay(500);
 		//digitalWrite(0, LOW);
