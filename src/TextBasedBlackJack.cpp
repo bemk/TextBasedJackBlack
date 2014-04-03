@@ -114,6 +114,7 @@ public:
 				digitalWrite(pinNumbers[5], HIGH);
 				return;
 			}
+			displayLED(getTotal());
 		}
 		displayLED(getTotal());
 		int computerValue = computerSequence();
