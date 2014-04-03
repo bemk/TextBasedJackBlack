@@ -21,7 +21,7 @@ private:
 	vector<Card> cardsInHand;
 	// Ace not included
 	vector<Card> cardsInDeck;
-	int endTurn = 0;
+	int endTurn;
 
 	void fillCards(){
 		int i = 0;
@@ -87,6 +87,9 @@ private:
 	}
 
 public:
+	BlackJack(){
+		endturn = 0;
+	}
 	void play(){
 		fillCards();
 //		printCards();
@@ -100,9 +103,11 @@ public:
 			if (getTotal() > 21){
 				print();
 				cout << "you are dead" << endl;
-				break;
+				digitalWrite(22, HIGH);
+				return;
 			}
 		}
+		displayLED(getTotal());
 		int computerValue = computerSequence();
 		if (computerValue > 21){
 			cout << "You have won the game" << endl;
@@ -127,15 +132,89 @@ public:
 			total += cardsInHand[i].getValue();
 		return total;
 	}
-/*
-	void shuffle(int size){
-		Card tempCardList[52];
-		for (int i = 0; i < size; ++i){
-			int x = 0;
+	void displayLED(int value){
+		switch (value){
+		case 4:
+			digitalWrite(12, HIGH);
+			break;
+		case 5:
+			digitalWrite(8, HIGH);
+			digitalWrite(12, HIGH);
+			break;
+		case 6:
+			digitalWrite(10, HIGH);
+			digitalWrite(12, HIGH);
+			break;
+		case 7:
+			digitalWrite(8, HIGH);
+			digitalWrite(10, HIGH);
+			digitalWrite(12, HIGH);
+			break;
+		case 8:
+			digitalWrite(16, HIGH);
+			break;
+		case 9:
+			digitalWrite(8, HIGH);
+			digitalWrite(16, HIGH);
+			break;
+		case 10:
+			digitalWrite(10, HIGH);
+			digitalWrite(16, HIGH);
+			break;
+		case 11:
+			digitalWrite(8, HIGH);
+			digitalWrite(10, HIGH);
+			digitalWrite(16, HIGH);
+			break;
+		case 12:
+			digitalWrite(12, HIGH);
+			digitalWrite(16, HIGH);
+			break;
+		case 13:
+			digitalWrite(8, HIGH);
+			digitalWrite(12, HIGH);
+			digitalWrite(16, HIGH);
+			break;
+		case 14:
+			digitalWrite(10, HIGH);
+			digitalWrite(12, HIGH);
+			digitalWrite(16, HIGH);
+			break;
+		case 15:
+			digitalWrite(8, HIGH);
+			digitalWrite(10, HIGH);
+			digitalWrite(12, HIGH);
+			digitalWrite(16, HIGH);
+			break;
+		case 16:
+			digitalWrite(18, HIGH);
+			break;
+		case 17:
+			digitalWrite(8, HIGH);
+			digitalWrite(18, HIGH);
+			break;
+		case 18:
+			digitalWrite(10, HIGH);
+			digitalWrite(18, HIGH);
+			break;
+		case 19:
+			digitalWrite(8, HIGH);
+			digitalWrite(10, HIGH);
+			digitalWrite(18, HIGH);
+			break;
+		case 20:
+			digitalWrite(12, HIGH);
+			digitalWrite(18, HIGH);
+			break;
+		case 21:
+			digitalWrite(8, HIGH);
+			digitalWrite(12, HIGH);
+			digitalWrite(18, HIGH);
+			break;
 		}
-	} */
-	//TODO: Shuffle list
-	//TODO: DrawCard method
+	}
+
+
 	void printCards(){
 		for (int i = 0; i < 48; ++i){
 			switch(cardsInDeck[i].getType()){
@@ -156,6 +235,8 @@ public:
 	}
 };
 
+const int pinNumbers[6] = {8,10,12,16,18,22};
+
 
 int main() {
 	cout << "BlackJack" << endl; // prints BlackJack
@@ -164,11 +245,15 @@ int main() {
 	//---------------------------------\\
 	//For the wiringPi
 	wiringPiSetup();
-	pinMode (0, OUTPUT);
-	//---------------------------------\\
+	//setup for the LED pins number 5 is the red LED;
+	for (int i = 0; i < 6; ++i){
+		pinMode(pinNumbers[i], OUTPUT)
+	}
 	while(input != 'n'){
+		for (int i = 0; i < 6; ++i){
+			digitalWrite(pinNumbers[i], HIGH);
+		}
 		//Debug reasons for the LEDS on the Pi
-		digitalWrite(0, HIGH);
 		//delay(500);
 		//digitalWrite(0, LOW);
 		//delay(500);
