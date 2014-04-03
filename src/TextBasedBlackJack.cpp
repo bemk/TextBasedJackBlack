@@ -11,6 +11,7 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <wiringPi.h>
 
 using namespace std;
 
@@ -160,7 +161,17 @@ int main() {
 	cout << "BlackJack" << endl; // prints BlackJack
 	cout << "*-------------------*" << endl;
 	char input;
+	//---------------------------------\\
+	//For the wiringPi
+	wiringPiSetup();
+	pinMode (0, OUTPUT);
+	//---------------------------------\\
 	while(input != 'n'){
+		//Debug reasons for the LEDS on the Pi
+		digitalWrite(0, HIGH);
+		//delay(500);
+		//digitalWrite(0, LOW);
+		//delay(500);
 		BlackJack blj;
 		blj.play();
 		cout << "Play again? [y/n]" << endl;
