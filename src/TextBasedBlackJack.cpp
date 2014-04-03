@@ -249,6 +249,8 @@ int main() {
 	for (int i = 0; i < 6; ++i){
 		pinMode(pinNumbers[i], OUTPUT);
 	}
+	pinMode(6, INPUT);
+	digitalWrite(6, LOW);
 	while(input != 'n'){
 		for (int i = 0; i < 6; ++i){
 			digitalWrite(pinNumbers[i], HIGH);
