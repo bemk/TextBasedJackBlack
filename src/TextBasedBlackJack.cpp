@@ -234,7 +234,11 @@ int main() {
 		BlackJack blj;
 		blj.play();
 		cout << "Play again? [y/n]" << endl;
-		cin >> input;
+		while (state == WAITING)
+			usleep (10);
+
+		if (state == NO)
+			input = 'n';
 	}
 	return 0;
 }
