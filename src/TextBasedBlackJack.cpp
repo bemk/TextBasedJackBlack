@@ -247,7 +247,7 @@ int main() {
 	wiringPiSetup();
 	//setup for the LED pins number 5 is the red LED;
 	for (int i = 0; i < 6; ++i){
-		pinMode(pinNumbers[i], OUTPUT)
+		pinMode(pinNumbers[i], OUTPUT);
 	}
 	while(input != 'n'){
 		for (int i = 0; i < 6; ++i){
