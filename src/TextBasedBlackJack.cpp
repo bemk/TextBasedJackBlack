@@ -88,7 +88,7 @@ private:
 
 public:
 	BlackJack(){
-		endturn = 0;
+		endTurn = 0;
 	}
 	void play(){
 		fillCards();
