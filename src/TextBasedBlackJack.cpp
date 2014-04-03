@@ -23,8 +23,6 @@ private:
 	vector<Card> cardsInDeck;
 	int endTurn;
 
-	int pinNumbers[6];
-
 	void fillCards(){
 		int i = 0;
 		for (int ind = 20; ind < 24; ++ind){
@@ -89,9 +87,10 @@ private:
 	}
 
 public:
+	static const int pinNumbers[6] = {15,16,1,4,5,6};
+
 	BlackJack(){
 		endTurn = 0;
-		pinNumbers[6] = {15,16,1,4,5,6};
 	}
 	void play(){
 		fillCards();
@@ -240,9 +239,6 @@ public:
 	}
 };
 
-const int pinNumbers[6] = {15,16,1,4,5,6};
-
-
 int main() {
 	cout << "BlackJack" << endl; // prints BlackJack
 	cout << "*-------------------*" << endl;
@@ -263,16 +259,14 @@ int main() {
 	digitalWrite(4, LOW);
 	digitalWrite(6, LOW);
  	*/
-
 	wiringPiSetup();
-	pinMode(1, OUTPUT);
-	pinMode(2, OUTPUT);
-	digitalWrite(1, LOW);
-	digitalWrite(2, LOW);
-	for (int i = 3; i <= 26; ++i){
-		pinMode(i, OUTPUT);
-		digitalWrite(i, HIGH);
-	}
+
+	pinMode(BlackJack::pinNumbers[0], OUTPUT);
+	pinMode(BlackJack::pinNumbers[1], OUTPUT);
+	pinMode(BlackJack::pinNumbers[2], OUTPUT);
+	pinMode(BlackJack::pinNumbers[3], OUTPUT);
+	pinMode(BlackJack::pinNumbers[4], OUTPUT);
+	pinMode(BlackJack::pinNumbers[5], OUTPUT);
 
 
 	while(input != 'n'){
