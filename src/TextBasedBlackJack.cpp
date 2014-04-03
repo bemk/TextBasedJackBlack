@@ -76,6 +76,7 @@ private:
 			break;
 		}
 		state = WAITING;
+		usleep(500);
 	}
 	void print(){
 		cout << "number of cards in hand: " << cardsInHand.size() << endl;
@@ -239,6 +240,7 @@ int main() {
 
 		if (state == NO)
 			input = 'n';
+		usleep(500);
 	}
 	return 0;
 }
