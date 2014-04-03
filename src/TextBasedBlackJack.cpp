@@ -141,6 +141,12 @@ public:
 		return total;
 	}
 	void displayLED(int value){
+		digitalWrite(pinNumbers[0], LOW]);
+		digitalWrite(pinNumbers[1], LOW]);
+		digitalWrite(pinNumbers[2], LOW]);
+		digitalWrite(pinNumbers[3], LOW]);
+		digitalWrite(pinNumbers[4], LOW]);
+		digitalWrite(pinNumbers[5], LOW]);
 		switch (value){
 		case 4:
 			digitalWrite(pinNumbers[2], HIGH);
@@ -274,7 +280,12 @@ int main() {
 	pinMode(pinNumbersArr[3], OUTPUT);
 	pinMode(pinNumbersArr[4], OUTPUT);
 	pinMode(pinNumbersArr[5], OUTPUT);
-
+	digitalWrite(pinNumbersArr[0], LOW]);
+	digitalWrite(pinNumbersArr[1], LOW]);
+	digitalWrite(pinNumbersArr[2], LOW]);
+	digitalWrite(pinNumbersArr[3], LOW]);
+	digitalWrite(pinNumbersArr[4], LOW]);
+	digitalWrite(pinNumbersArr[5], LOW]);
 
 	while(input != 'n'){
 //		for (int i = 0; i < 6; ++i){
