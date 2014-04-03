@@ -104,6 +104,7 @@ public:
 		startDraw();
 		char input;
 		while(!endTurn){
+			displayLED(getTotal());
 			print();
 			cout << "Draw card? [y/n]" << endl;
 			cin >> input;
@@ -114,7 +115,6 @@ public:
 				digitalWrite(pinNumbers[5], HIGH);
 				return;
 			}
-			displayLED(getTotal());
 		}
 		displayLED(getTotal());
 		int computerValue = computerSequence();
@@ -142,92 +142,10 @@ public:
 		return total;
 	}
 	void displayLED(int value){
-		digitalWrite(pinNumbers[0], LOW);
-		digitalWrite(pinNumbers[1], LOW);
-		digitalWrite(pinNumbers[2], LOW);
-		digitalWrite(pinNumbers[3], LOW);
-		digitalWrite(pinNumbers[4], LOW);
-		digitalWrite(pinNumbers[5], LOW);
-		switch (value){
-		case 4:
-			digitalWrite(pinNumbers[2], HIGH);
-			break;
-		case 5:
-			digitalWrite(pinNumbers[0], HIGH);
-			digitalWrite(pinNumbers[2], HIGH);
-			break;
-		case 6:
-			digitalWrite(pinNumbers[1], HIGH);
-			digitalWrite(pinNumbers[2], HIGH);
-			break;
-		case 7:
-			digitalWrite(pinNumbers[0], HIGH);
-			digitalWrite(pinNumbers[1], HIGH);
-			digitalWrite(pinNumbers[2], HIGH);
-			break;
-		case 8:
-			digitalWrite(pinNumbers[3], HIGH);
-			break;
-		case 9:
-			digitalWrite(pinNumbers[0], HIGH);
-			digitalWrite(pinNumbers[3], HIGH);
-			break;
-		case 10:
-			digitalWrite(pinNumbers[1], HIGH);
-			digitalWrite(pinNumbers[3], HIGH);
-			break;
-		case 11:
-			digitalWrite(pinNumbers[0], HIGH);
-			digitalWrite(pinNumbers[1], HIGH);
-			digitalWrite(pinNumbers[3], HIGH);
-			break;
-		case 12:
-			digitalWrite(pinNumbers[2], HIGH);
-			digitalWrite(pinNumbers[3], HIGH);
-			break;
-		case 13:
-			digitalWrite(pinNumbers[0], HIGH);
-			digitalWrite(pinNumbers[2], HIGH);
-			digitalWrite(pinNumbers[3], HIGH);
-			break;
-		case 14:
-			digitalWrite(pinNumbers[1], HIGH);
-			digitalWrite(pinNumbers[2], HIGH);
-			digitalWrite(pinNumbers[3], HIGH);
-			break;
-		case 15:
-			digitalWrite(pinNumbers[0], HIGH);
-			digitalWrite(pinNumbers[1], HIGH);
-			digitalWrite(pinNumbers[2], HIGH);
-			digitalWrite(pinNumbers[3], HIGH);
-			break;
-		case 16:
-			digitalWrite(pinNumbers[4], HIGH);
-			break;
-		case 17:
-			digitalWrite(pinNumbers[0], HIGH);
-			digitalWrite(pinNumbers[4], HIGH);
-			break;
-		case 18:
-			digitalWrite(pinNumbers[1], HIGH);
-			digitalWrite(pinNumbers[4], HIGH);
-			break;
-		case 19:
-			digitalWrite(pinNumbers[0], HIGH);
-			digitalWrite(pinNumbers[1], HIGH);
-			digitalWrite(pinNumbers[4], HIGH);
-			break;
-		case 20:
-			digitalWrite(pinNumbers[2], HIGH);
-			digitalWrite(pinNumbers[4], HIGH);
-			break;
-		case 21:
-			digitalWrite(pinNumbers[0], HIGH);
-			digitalWrite(pinNumbers[2], HIGH);
-			digitalWrite(pinNumbers[4], HIGH);
-			break;
-		default:
-			break;
+		int i = 0;
+		for (; i < 5; i++)
+		{
+			digitalWrite(pinNumbers[i], (value & (1 << i)) ? HIGH : LOW);
 		}
 	}
 
