@@ -22,8 +22,8 @@ private:
 	// Ace not included
 	vector<Card> cardsInDeck;
 	int endTurn;
-	const int pinNumbers[6] = {15,16,1,4,5,6};
 
+	int pinNumbers[6];
 
 	void fillCards(){
 		int i = 0;
@@ -91,6 +91,7 @@ private:
 public:
 	BlackJack(){
 		endTurn = 0;
+		pinNumbers[6] = {15,16,1,4,5,6};
 	}
 	void play(){
 		fillCards();
